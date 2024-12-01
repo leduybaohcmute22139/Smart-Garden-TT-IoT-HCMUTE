@@ -1,0 +1,319 @@
+html{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+/* ----------------------------------Begin header---------------------------------- */
+#header{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #fdffbb;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+#header .project-name{
+    font-size: 60px;
+    font-weight: 600;
+    margin: 10px;
+    color: #0BA0A5;
+    text-transform: uppercase;
+    text-justify: inter-word;
+}
+#header .icon{
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 10px;
+}
+/* ----------------------------------End hearder---------------------------------- */
+
+
+/* ----------------------------------Begin content---------------------------------- */
+#content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: blanchedalmond; 
+}
+
+
+/* Khúc này chưa hiểu, cần học lại */
+
+/* Điều chỉnh content */
+#content {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các phần tử xuống hàng */
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: blanchedalmond;
+}
+
+/* Điều chỉnh các container để mỗi hàng chứa 3 div trên màn hình lớn */
+#content .container {
+    flex-basis: calc(33.333% - 20px); /* Chiếm 1/3 chiều rộng của hàng */
+    margin: 10px;
+}
+
+/* Điều chỉnh cho màn hình nhỏ hơn */
+@media (max-width: 1024px) {
+    #content .container {
+        flex-basis: calc(50% - 20px); /* Chiếm 50% chiều rộng của hàng khi màn hình nhỏ */
+    }
+}
+
+@media (max-width: 768px) {
+    #content .container {
+        flex-basis: calc(100% - 20px); /* Chiếm toàn bộ chiều rộng khi màn hình rất nhỏ */
+    }
+}
+/* Khúc này chưa hiểu, cần học lại */
+
+
+#content .button.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 230px;
+    background-color: #FEFEFE;
+    border: 2px solid;
+    margin: 10px 0 10px 0;
+}
+.button.container .button{
+    position: relative;
+    margin-top: 50px;
+    width: 200px;
+    height: 80px;
+    border-radius: 200px;
+    cursor: pointer;
+    background-color: #ccc;
+    transition: 0.3s;
+}
+.button.container .button::before{
+    position: absolute;
+    content: "";
+    background-color: #FEFEFE;
+    width: 70px;
+    height: 70px;
+    border-radius: 200px;
+    margin: 5px;
+    transition: 0.3s;
+}
+.button.container input{
+    display: none;
+}
+.button.container input:checked + .button{
+    background-color: #0BA0A5;
+}
+
+.button.container input:checked + .button::before{
+    transform: translateX(120px);
+}
+
+.button.container .led{
+    margin-top: 40px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #0BA0A5;
+}
+/* ----------------------------------End Led Button---------------------------------- */
+/* ----------------------------------Begin Range-Bar---------------------------------- */
+#content .range-bar.container{
+    display: flex;
+    position: relative;
+    /* flex-direction: column; */
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #FEFEFE;
+    width: 450px;
+    height: 230px;
+    border: 2px solid;
+    margin: 10px 0 10px 0;
+}
+.range-bar.container .slider{
+    appearance: none;
+    width: 60%;
+    height: 8px;
+    background-color: #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+.range-bar.container .slider::-webkit-slider-thumb{
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #0BA0A5;
+    cursor: pointer;
+}
+.range-bar.container .slider::-moz-range-thumb{ /*for mozila*/
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #0BA0A5;
+    cursor: pointer;
+}
+.range-bar.container .value{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    font-size: 40px;
+    font-weight: 600;
+    color: #0BA0A5;
+    width: 60px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #ccc;
+}
+.range-bar.container .text{
+    position: absolute;
+    bottom: 0;
+    padding: 0 0 5px 0;
+    font-size: 30px;
+    font-weight: 600;
+    color: #0BA0A5;
+}
+/* ----------------------------------End Range-Bar---------------------------------- */
+
+/* ----------------------------------Begin data ---------------------------------- */
+#content .data.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 230px;
+    background-color: #FEFEFE;
+    border: 2px solid;
+    margin: 10px 0 10px 0;
+}
+
+.data.container .circular-progress{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 10px 0;
+    border-radius: 50%;
+    background: conic-gradient(#0BA0A5 3.6deg, #ccc 0deg);
+}
+
+.data.container .circular-progress::before{
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: #FEFEFE;
+}
+
+.circular-progress .progress-value{
+    position: absolute;
+    font-size: 40px;
+    font-weight: 600;
+    color: #0BA0A5;
+}
+
+.data.container .value{
+    margin-top: 5px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #0BA0A5;
+}
+/* ----------------------------------End Data---------------------------------- */
+/* ----------------------------------End Content---------------------------------- */
+/* ----------------------------------Begin Footer---------------------------------- */
+#footer{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #fdffbb;
+    justify-content: right;
+    align-items: right;
+    padding: 20px 10px;
+
+}
+#footer .group-name{
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    text-transform: uppercase;
+}
+#footer .name{
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+    text-transform: uppercase;
+}
+#footer .contact{
+    font-size: 13px;
+    font-weight: 600;
+    color: blac;
+}
+/* ----------------------------------End Footer---------------------------------- */
+#content .alarm.container {
+    display: flex;
+    flex-direction: column; /* Sắp xếp theo chiều dọc */
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 230px;
+    background-color: #FEFEFE;
+    border: 2px solid;
+    margin: 10px 0;
+    position: relative; /* Cho phép sử dụng position tuyệt đối cho text */
+}
+
+.alarm-image {
+    width: 150px;
+    height: 150px;
+    transition: 0.3s;
+}
+
+.text {
+    position: absolute;
+    bottom: 5px; /* Đặt text xuống gần đáy */
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    color: #0BA0A5;
+    width: 100%; /* Để text chiếm toàn bộ chiều ngang container */
+}
+
+/* ----------------------------------Begin Charts---------------------------------- */
+#chart-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 330px;
+    background-color: #FEFEFE;
+    border: 2px solid;
+    margin: 10px 0 10px 0;
+}
+#chart-container .title{
+    margin-top: 5px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #0BA0A5;
+    text-align: center;
+    margin:10px 0 10px 0;
+}
+#chart-container .chart-data{
+    width: 430px;
+    height: 240px;
+}

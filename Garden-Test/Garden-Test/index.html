@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Garden IoT</title>
+    <link rel="stylesheet" href="Assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="header">
+        <h2 class="project-name">Smart Garden</h2>
+        <img src="Assets/img/icon.png" alt="tree in a pot" class="icon">
+    </div>
+
+    <div id="content">
+        <!-- -------------------------Begin Led Button------------------------- -->
+        <div class="button container">
+            <input type="checkbox" id="check">
+            <label for="check" class="button"></label>
+            <span class="led">LED</span>
+        </div>
+        <!-- -------------------------End Led Button------------------------- -->
+
+        <!-- -------------------------Begin Range-Bar------------------------- -->
+        <div class="range-bar container">
+            <input type="range" class="slider" id="range" min="0" max="20" value="5" step="1">
+            <div class="value">20</div> 
+            <span class="text">Pump/s</span>
+        </div>
+        <!-- -------------------------End Range-Bar------------------------- -->
+
+        <!-- -------------------------Begin Alarm------------------------- -->
+        <div class="alarm container">
+            <label class="alarm-label">
+                <img src="Assets/img/alarm1.png" alt="Alarm" class="alarm-image" />
+            </label>
+            <span class="text">Alarm</span>
+        </div>
+        <!-- -------------------------End Alarm------------------------- -->
+
+        <!-- -------------------------Begin Data------------------------- -->
+        <div class="data container">
+            <div class="temperature circular-progress">
+                <span class="temperature progress-value">10%</span>
+            </div>
+            <span class="value">Temperature</span>
+        </div>
+        <div class="data container">
+            <div class="humidity circular-progress">
+                <span class="humidity progress-value">20%</span>
+            </div>
+            <span class="value">Humidity</span>
+        </div>
+        <div class="data container">
+            <div class="pH circular-progress">
+                <span class="pH progress-value">30%</span>
+            </div>
+            <span class="value">pH</span>
+        </div>
+        <!-- -------------------------End Data------------------------- -->
+
+        <!-- -------------------------Begin Charts------------------------- -->
+        <div id="chart-container">
+            <div class="chart temperature">
+                <h3 class="title">Temperature Chart</h3>
+                <iframe class="chart-data" src="https://thingspeak.com/channels/2699409/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+            </div>
+        </div>
+        <div id="chart-container">
+            <div class="chart humidity">
+                <h3 class="title">Humidity Chart</h3>
+                <iframe class="chart-data" src="https://thingspeak.com/channels/2699409/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+            </div>
+        </div>
+        <div id="chart-container">
+            <div class="chart pH">
+                <h3 class="title">pH Chart</h3>
+                <iframe class="chart-data" src="https://thingspeak.com/channels/2699409/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+            </div>
+        </div>
+        <!-- -------------------------End Charts------------------------- -->
+    </div>
+
+    <div id="footer">
+        <span class="group-name">Nhom: TT IoT</span>
+        <span class="name">Le Duy Bao 22139003<br>Nguyen Duy Cuong 22139007</span>
+        <span class="contact">Contact: lenguyenbaocuongk22@gmail.com</span>
+    </div>
+
+    <!-- -------------------------Script------------------------- -->
+    <script src="Assets/func.js" type="module"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-database.js";
+        import { getTemperature, updateLedStatus, updateRangeBar, updateAlarmStatus, syncDataToThingSpeak} from "./Assets/func.js";
+      
+        const firebaseConfig = {
+            apiKey: "AIzaSyA_N4KfuLSLI6l8T4vYhngHZdsyDfzobhE",
+            authDomain: "smart-garden-af39d.firebaseapp.com",
+            projectId: "smart-garden-af39d",
+            storageBucket: "smart-garden-af39d.appspot.com",
+            messagingSenderId: "502339999261",
+            appId: "1:502339999261:web:9108c65153f7f8938298f4",
+            databaseURL: "https://smart-garden-af39d-default-rtdb.firebaseio.com/"
+        };
+      
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Gọi các hàm trong func.js
+        getTemperature(database);
+        updateLedStatus(database);
+        updateRangeBar(database);
+        updateAlarmStatus(database);
+        syncDataToThingSpeak(database);
+    </script>
+</body>
+</html>
