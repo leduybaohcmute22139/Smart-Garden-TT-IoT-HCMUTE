@@ -74,7 +74,7 @@ html{
         flex-basis: calc(100% - 20px); /* Chiếm toàn bộ chiều rộng khi màn hình rất nhỏ */
     }
 }
-/* Khúc này chưa hiểu, cần học lại */
+
 
 
 #content .button.container{
